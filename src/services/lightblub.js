@@ -24,7 +24,7 @@ export class LightBlub {
     })
     .then(json => {
       console.log('on', json);
-      this.light = !this.light;
+      this.light = true;
       return json
     });
 
@@ -36,22 +36,22 @@ export class LightBlub {
     })
     .then(json => {
       console.log('off', json);
-      this.light = !this.light;
+      this.light = false;
       return json
     });
   }
 
   fetch(url, data) {
-    return fetch(this.baseUrl+url, {
+    return window.fetch(this.baseUrl+url, {
       method: 'post',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
+    })
     .then(status)
     .then(json)
-
   }
 }
 
