@@ -60,7 +60,7 @@ gulp.task('angular2', function () {
         .pipe(rename(function(path){
             path.dirname = 'angular2/' + path.dirname; //this is not ideal... but not sure how to change angular's file structure
             path.extname = ''; //hack, see: https://github.com/sindresorhus/gulp-traceur/issues/54
-        })) 
+        }))
         .pipe(traceur({ modules: 'instantiate', moduleName: true}))
         .pipe(concat('angular2.js'))
         .pipe(gulp.dest('dist/lib'));
@@ -79,6 +79,7 @@ gulp.task('play', ['default'], function () {
     gulp.watch(PATHS.src.js, ['js']);
 
     app = connect().use(serveStatic(__dirname + '/dist'));  // serve everything that is static
+    app = connect().use(serveStatic(__dirname + '/public'));  // serve everything that is static
     http.createServer(app).listen(port, function () {
       open('http://localhost:' + port);
     });
