@@ -6,17 +6,20 @@ var appTemplate = `
 
 <br>
 
+
 <center>
-  <span style="font-size: 4em">
+  <span *if="name">Hello, {{name}}!</span>
+  <div style="font-size: 6em">
     &#128161;
-  </span>
-  <button class="btn btn-default" (click)="lightbulb.on()">Toggle Lightbulb On</button>
-  <button class="btn btn-default" (click)="lightbulb.off()">Toggle Lightbulb Off</button>
+  </div>
+  <h1>
+    Light Bulb
+  </h1>
 </center>
+  <button class="btn btn-warning btn-lrg btn-block" (click)="lightbulb.on()">&#128161</button>
+  <button class="btn btn-default bt-lrg btn-block" (click)="lightbulb.off()">! &#128161</button>
 
 <br>
-
-<span *if="name">Hello, {{name}}!</span>
 
 `;
 
